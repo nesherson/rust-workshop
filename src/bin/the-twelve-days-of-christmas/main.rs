@@ -28,44 +28,44 @@ fn main() {
 }
 
 fn get_name(index: usize) -> String {
-    let mut value = String::new();
+    let mut value = "";
 
     if index == 0 {
-        value = "first".to_string();
+        value = "first";
     }
     else if index == 1 {
-        value =  "second".to_string();
+        value =  "second";
     }
     else if index == 2 {
-        value =  "third".to_string();
+        value =  "third";
     }
     else if index == 3 {
-        value =  "fourth".to_string();
+        value =  "fourth";
     }
     else if index == 4 {
-        value =  "fifth".to_string();
+        value =  "fifth";
     }
     else if index == 5 {
-        value =  "sixth".to_string();
+        value =  "sixth";
     }
     else if index == 6 {
-        value =  "seventh".to_string();
+        value =  "seventh";
     }
     else if index == 7 {
-        value =  "eight".to_string();
+        value =  "eight";
     }
     else if index == 8 {
-        value =  "ninth".to_string();
+        value =  "ninth";
     }
     else if index == 9 {
-        value =  "tenth".to_string();
+        value =  "tenth";
     }
     else if index == 10 {
-        value =  "eleventh".to_string();
+        value =  "eleventh";
     }
     else if index == 11 {
-        value =  "twelfth".to_string();
+        value =  "twelfth";
     }
 
-    return value;
+    return value.to_string();
 }
