@@ -1,9 +1,35 @@
 use::std::io;
-/*
-Reverse a string
-*/
+
 fn main() {
-   vowel_exercise();
+    reverse_string();
+    vowel_exercise();
+}
+
+fn reverse_string() {
+    let mut input = String::new();
+    let mut reversed_input = String::new();
+
+    println!("Please enter a word: ");
+
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read line");
+
+    let trimmed_string = input.trim();
+    let input_length =  trimmed_string
+        .chars()
+        .count();
+    let mut index = 0;
+
+    while index < input_length {
+        reversed_input.push(trimmed_string
+            .chars()
+            .nth(input_length - index - 1).unwrap());
+
+        index += 1;
+    }
+
+    println!("Reversed input: {}", reversed_input);
 }
 
 fn vowel_exercise() {
