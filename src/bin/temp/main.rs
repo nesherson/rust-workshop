@@ -29,8 +29,16 @@ fn main() {
 
     let result: u32;
 
+    let operation = operation.trim();
+
     if operation.trim() == "+" {
         result = first_number + second_number;
+    } else if operation.trim() == "-" {
+        result = first_number - second_number;
+    } else if operation.trim() == "*" {
+        result = first_number * second_number;
+    } else if operation.trim() == "/" {
+        result = first_number / second_number;
     } else {
         result = 0
     }
