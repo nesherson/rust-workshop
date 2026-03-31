@@ -18,7 +18,7 @@ fn main() {
         .filter_map(|x| x.parse().ok())
         .collect();
 
-    if numbers.iter().count() < 2 {
+    if numbers.len() < 2 {
         println!("Invalid input!");
 
         return;
@@ -26,6 +26,12 @@ fn main() {
 
     let first_number = numbers[0];
     let second_number = numbers[1];
+
+    if second_number == 0.0 {
+        println!("Cannot divide by zero!");
+
+        return;
+    }
 
     let result: f32 = match operator {
         '+' => first_number + second_number,
