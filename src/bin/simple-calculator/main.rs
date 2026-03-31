@@ -1,47 +1,53 @@
 use std::io;
 
 fn main() {
-    let mut first_number = String::new();
-    let mut second_number = String::new();
-    let mut operation = String::new();
+    let mut input = String::new();
 
     println!("***Welcome to simple calculator***");
-    println!("Enter first number:");
+    println!("Enter expression(e.g. 3+5):");
 
     io::stdin()
-        .read_line(&mut first_number)
+        .read_line(&mut input)
         .expect("Failed to read line");
 
-    println!("Enter second number:");
+    let operator = get_operator(&input);
 
-    io::stdin()
-        .read_line(&mut second_number)
-        .expect("Failed to read line");
+    let numbers: Vec<f32> = input
+        .trim()
+        .split(operator)
+        .filter_map(|x| x.parse().ok())
+        .collect();
 
-    println!("Enter operation:");
+    if numbers.iter().count() < 2 {
+        println!("Invalid input!");
 
-    io::stdin()
-        .read_line(&mut operation)
-        .expect("Failed to read line");
-
-    let first_number: u32 = first_number.trim().parse().expect("Wrong value");
-    let second_number: u32 = second_number.trim().parse().expect("Wrong value");
-
-    let result: u32;
-
-    let operation = operation.trim();
-
-    if operation.trim() == "+" {
-        result = first_number + second_number;
-    } else if operation.trim() == "-" {
-        result = first_number - second_number;
-    } else if operation.trim() == "*" {
-        result = first_number * second_number;
-    } else if operation.trim() == "/" {
-        result = first_number / second_number;
-    } else {
-        result = 0
+        return;
     }
 
-    println!("Your input {result}")
+    let first_number = numbers[0];
+    let second_number = numbers[1];
+
+    let result: f32 = match operator {
+        '+' => first_number + second_number,
+        '-' => first_number - second_number,
+        '*' => first_number * second_number,
+        '/' => first_number / second_number,
+        _ => 0.0,
+    };
+
+    println!("Your input {}", result)
+}
+
+fn get_operator(text: &str) -> char {
+    if text.trim().contains("+") {
+        return '+';
+    } else if text.trim().contains("-") {
+        return '-';
+    } else if text.trim().contains("*") {
+        return '*';
+    } else if text.trim().contains("/") {
+        return '/';
+    } else {
+        return '+';
+    }
 }
